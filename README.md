@@ -108,6 +108,8 @@ Place `config.json` in `<root>/config/`
 
 ### GetAllTokens: `GET` at `<http_host>:<http_port>\tokens`
 
+### Swagger: `GET` at `<http_host>:<http_port>\api`
+
 ## Testing
 
 To be added
