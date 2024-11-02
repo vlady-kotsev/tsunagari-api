@@ -57,6 +57,7 @@ Place `config.json` in `<root>/config/`
     "port": "<http_port>",
     "grpcHost": "<grpc_host>",
     "grpcPort": "<grpc_port>",
+    "grpcPassword": "<grpc_password>",
     "protoPath": "../proto/transactions.proto"
   },
   "networks": [

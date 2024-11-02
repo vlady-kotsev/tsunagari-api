@@ -6,6 +6,7 @@ import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 import { Logger } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { AuthInterceptor } from './app.interceptor';
 
 async function bootstrap() {
   try {
@@ -52,6 +53,9 @@ async function bootstrap() {
     const appPort = configService.get('app.port') ?? 3000;
     await app.listen(appPort, appHost);
     Logger.log(`HTTP server running on port ${appHost}:${appPort}`);
+
+    const authInterceptor = grpcApp.get(AuthInterceptor);
+    grpcApp.useGlobalInterceptors(authInterceptor);
 
     await grpcApp.listen();
     Logger.log(`gRPC server running on port ${grpcHost}:${grpcPort}`);

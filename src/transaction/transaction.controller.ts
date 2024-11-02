@@ -13,7 +13,7 @@ import { Pagination } from 'nestjs-typeorm-paginate';
 import { Transaction } from './transaction.entity';
 import { TransactionService } from './transaction.service';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
-import { GrpcMethod } from '@nestjs/microservices';
+import { GrpcMethod, RpcException } from '@nestjs/microservices';
 import { ServerUnaryCall } from '@grpc/grpc-js';
 import { Metadata } from '@grpc/grpc-js';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -76,7 +76,7 @@ export class TransactionController {
     try {
       return await this.transactionService.getTransactionById(id);
     } catch (error) {
-      throw new HttpException(error.message, HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new RpcException(error.message);
     }
   }
 }

@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeOrmConfig } from '../db/data-source';
 import { ConfigModule } from '@nestjs/config';
 import config from '../config/config.json';
+import { AuthInterceptor } from './app.interceptor';
 
 @Module({
   imports: [
@@ -21,5 +22,6 @@ import config from '../config/config.json';
       load: [() => config],
     }),
   ],
+  providers: [AuthInterceptor],
 })
 export class AppModule {}
