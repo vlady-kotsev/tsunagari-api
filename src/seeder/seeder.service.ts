@@ -36,6 +36,7 @@ export class SeederService {
       const network = new Network();
       network.name = networkObject.name;
       network.chainId = networkObject.chainId;
+      network.bridgeAddress = networkObject.bridgeAddress;
       networks.push(network);
     }
     return networks;

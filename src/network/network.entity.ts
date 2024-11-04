@@ -30,4 +30,12 @@ export class Network {
   @ApiProperty({ example: 80002, description: 'Chain ID of the network' })
   @Column('int')
   chainId: number;
+
+  /**
+   * The address of the bridge contract on the network
+   * Stored as varchar in the database
+   */
+  @ApiProperty({ example: '0x0000000000000000000000000000000000000000', description: 'Bridge address of the network' })
+  @Column('varchar')
+  bridgeAddress: string;
 }
