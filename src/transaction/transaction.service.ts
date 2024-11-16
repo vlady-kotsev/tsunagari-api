@@ -29,9 +29,9 @@ export class TransactionService {
    * @returns Promise containing an array of all transactions
    * @throws Error if database operation fails
    */
-  getAllTransactions() {
+  async getAllTransactions() {
     try {
-      return this.transactionRepository.find();
+      return await this.transactionRepository.find();
     } catch (error) {
       Logger.error(error);
       throw error;
@@ -44,9 +44,9 @@ export class TransactionService {
    * @returns Promise containing the created transaction
    * @throws Error if transaction creation fails
    */
-  addTransaction(createTransactionDto: CreateTransactionDto) {
+  async addTransaction(createTransactionDto: CreateTransactionDto) {
     try {
-      return this.transactionRepository.save(createTransactionDto);
+      return await this.transactionRepository.save(createTransactionDto);
     } catch (error) {
       Logger.error(error);
       throw error;
@@ -59,9 +59,9 @@ export class TransactionService {
    * @returns Promise containing the found transaction
    * @throws Error if transaction is not found or operation fails
    */
-  getTransactionById(id: number) {
+  async getTransactionById(id: number) {
     try {
-      return this.transactionRepository.findOneBy({ id });
+      return await this.transactionRepository.findOneBy({ id });
     } catch (error) {
       Logger.error(error);
       throw error;

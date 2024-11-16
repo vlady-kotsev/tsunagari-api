@@ -23,9 +23,9 @@ export class NetworkService {
    * @returns {Promise<Network[]>} A promise that resolves to an array of networks
    * @throws {Error} If there's an error retrieving the networks
    */
-  getAllNetworks(): Promise<Network[]> {
+  async getAllNetworks(): Promise<Network[]> {
     try {
-      return this.networkRepository.find();
+      return await this.networkRepository.find();
     } catch (error) {
       Logger.error(error);
       throw error;

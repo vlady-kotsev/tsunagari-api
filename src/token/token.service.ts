@@ -28,9 +28,9 @@ export class TokenService {
    * @returns Promise containing an array of all tokens
    * @throws Error if database operation fails
    */
-  getAllTokens(): Promise<Token[]> {
+  async getAllTokens(): Promise<Token[]> {
     try {
-      return this.tokenRepository.find();
+      return await this.tokenRepository.find();
     } catch (error) {
       Logger.error(error);
       throw error;
