@@ -14,6 +14,13 @@ async function bootstrap() {
       logger: ['log', 'fatal', 'error', 'warn', 'debug'],
     });
 
+    // Enable CORS for all origins
+    app.enableCors({
+      origin: '*',
+      methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+      allowedHeaders: 'Content-Type, Accept, Authorization',
+    });
+
     const configService = app.get(ConfigService);
 
     const swaggerConfig = new DocumentBuilder()
