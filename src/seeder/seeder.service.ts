@@ -57,6 +57,7 @@ export class SeederService {
         token.address = tokenAddress;
         token.isNative = tokenInfo.isNative;
         token.chainId = parseInt(chainId);
+        token.origin = tokenInfo.origin;
         tokens.push(token);
       }
     }

@@ -27,6 +27,10 @@ export class Token {
   @Column('boolean')
   isNative: boolean;
 
+  @ApiProperty({ example: 80002, description: 'Origin Chain ID of the token' })
+  @Column('int')
+  origin: number;
+
   @ApiProperty({ example: 'https://example.com/logo.png', description: 'Logo URL of the token' })
   @Column('varchar', { nullable: true })
   logoUrl: string;
