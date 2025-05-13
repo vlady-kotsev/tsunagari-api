@@ -39,12 +39,12 @@ Place `config.json` in `<root>/config/`
 ```json
 {
   "db": {
-    "host": "<postgres_host>",
-    "port": "<postgres_port>",
-    "username": "<postgres_username>",
-    "password": "<postgres_password",
-    "database": "<database_name>",
-    "seed": "<True/False>",
+    "host": "postgres",
+    "port": 5432,
+    "username": "postgres",
+    "password": "mypass",
+    "database": "bridge",
+    "seed": true,
     "maxAttempts": 5,
     "initialDelay": 1000
   },
@@ -53,46 +53,89 @@ Place `config.json` in `<root>/config/`
     "max": 100
   },
   "app": {
-    "host": "<http_host>",
-    "port": "<http_port>",
-    "grpcHost": "<grpc_host>",
-    "grpcPort": "<grpc_port>",
-    "grpcPassword": "<grpc_password>",
+    "host": "0.0.0.0",
+    "port": 3000,
+    "grpcHost": "0.0.0.0",
+    "grpcPort": 5000,
+    "grpcPassword": "grpcpass",
     "protoPath": "../proto/transactions.proto"
   },
   "networks": [
     {
-      "name": "amoy",
-      "chainId": 80002
+      "name": "Taiko Hekla V2",
+      "chainId": 167009,
+      "bridgeAddress": "0xC1025CbAc0C44EE3d1990BFb0581367433cC4901"
     },
     {
-      "name": "taiko",
-      "chainId": 167009
+      "name": "Base Sepolia",
+      "chainId": 84532,
+      "bridgeAddress": "0xC6D23FD19Ea36B9c75e9Aa5A09f33f39df78d344"
+    },
+    {
+      "name": "Solana",
+      "chainId": 0,
+      "bridgeAddress": "NfuWnZr8HR4mxULPG61Nh7zSbdinwGtNQGVoeuxM5Jf"
     }
   ],
   "tokens": {
-    "80002": {
-      "0x43C3176222275dd9cb55CF167Ac322ec170a5BcB": {
-        "name": "AmoyNativeToken",
-        "symbol": "ANT",
-        "isNative": true
+    "167009": {
+      "0xFE928174dD13f86199898b8Cb26a88311D27E9a1": {
+        "name": "Taiko Native Token",
+        "symbol": "TNT",
+        "isNative": true,
+        "origin": 167009
       },
-      "0x20d131eA180bA673F365b7e04666e90B2eF7eb32": {
-        "name": "WrappedTaikoNativeToken",
-        "symbol": "WTNT",
-        "isNative": false
+      "0xc3001071c3f7E2084B2Bf79CD4f085d51F6226d8": {
+        "name": "Wrapped Base Native Token [taiko]",
+        "symbol": "WANT",
+        "isNative": false,
+        "origin": 84532
+      },
+      "0x9C7da31D569c6Ad0B2F8f2EFA9D91B0fa1e77184": {
+        "name": "Wrapped Solana Native Token [taiko]",
+        "symbol": "WSNT",
+        "isNative": false,
+        "origin": 0
       }
     },
-    "167009": {
-      "0xDA79D9B7FAc84C3Bc49290Fd8Dfcae2eB2a0e1F6": {
-        "name": "TaikoNativeToken",
-        "symbol": "TNT",
-        "isNative": true
+    "84532": {
+      "0x8A5C9D7AF6C168FC986bb94874fACDb8445199f7": {
+        "name": "Base Native Token",
+        "symbol": "BNT",
+        "isNative": true,
+        "origin": 84532
       },
-      "0xb892F6638bE64e70B053a9f988624BAf12bBE5D5": {
-        "name": "WrappedAmoyNativeToken",
-        "symbol": "WANT",
-        "isNative": false
+      "0x64aB6E6b1E2243B39D0d483ef58F86C775119159": {
+        "name": "Wrapped Taiko Native Token [base]",
+        "symbol": "WTNT",
+        "isNative": false,
+        "origin": 167009
+      },
+      "0x475F383441E5998c7EdFa9c6E4B54784904a3ae3": {
+        "name": "Wrapped Solana Native Token [base]",
+        "symbol": "WSNT",
+        "isNative": false,
+        "origin": 0
+      }
+    },
+    "0": {
+      "Eny4Cdvbxos72WVY2RP4oNxELbF361EXgdCk6mDRarSK": {
+        "name": "Solana Native Token",
+        "symbol": "SNT",
+        "isNative": true,
+        "origin": 0
+      },
+      "D2Zq2bo7aELGtWpAbw3ZHSrUosRAKept9iiQ1obkCzZB": {
+        "name": "Wrapped Base Native Token [sol]",
+        "symbol": "WBNT",
+        "isNative": false,
+        "origin": 84532
+      },
+      "EFqwiLvu7oeGi4y9L6N5wYscX5GHs1LfQFFbBEQ6CCxu": {
+        "name": "Wrapped Taiko Native Token",
+        "symbol": "WTNT",
+        "isNative": false,
+        "origin": 167009
       }
     }
   }
